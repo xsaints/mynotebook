@@ -21,3 +21,13 @@ class Entry(models.Model):
 		
 	def __str__(self):
 		return self.text[:50] + '...'
+
+
+class UsersN(models.Model):
+	first_name = models.CharField(max_length=50)		
+	last_name= models.CharField(max_length= 50)
+	user_email= models.EmailField(unique= True)
+
+
+	def __str__(self):
+		return self.first_name + ' '+ self.last_name

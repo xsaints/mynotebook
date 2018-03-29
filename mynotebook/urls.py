@@ -25,4 +25,12 @@ urlpatterns= [
 	# edit an entry
 	url(r'^edit_entry/(?P<entry_id>\d+)/$', views.edit_entry, name= 'edit_entry'),	
 
+
+	# list all users
+	url(r'^users/$', views.list_users, name= 'users'),
+
+
+	# add a new topic
+	url(r'^new_user/$', views.new_user, name= 'new_user'),
+
 ]

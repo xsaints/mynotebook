@@ -1,0 +1,282 @@
+<form action = "{% url 'namespace in main.urls: name in app.urls' %}" 
+
+from django.contrib.auth.models import User
+users= User.objects.all()
+
+
+
+cls
+j:
+cd xsaints70
+mkdir xx006 && cd xx006
+rem virtualenv --python=c:\python27\python.exe env36
+rem virtualenv --python=`py -3` env36
+c:\Python36\python -m venv xx006_venv
+xx006_venv\Scripts\activate
+dir
+pip install django
+django-admin startproject xx006_main .
+#dir
+#dir proj010
+#python manage.py migrate
+python manage.py runserver
+
+python manage.py startapp xx006_app001
+python manage.py startapp xx006_app002
+
+mkdir xx006_app001\templates\xx006_app001
+mkdir xx006_app001\templates\xx006_app002
+
+mkdir static\css
+mkdir static\js
+
+
+
+#add to settings.py, main urls.py
+#edit app urls.py, create views, create template
+
+
+psql -U postgres postgres
+stjude00
+
+CREATE USER xsaints57;
+
+CREATE DATABASE djangogirls OWNER xsaints57;
+
+alter user xsaints57 WIHT PASSWORD 'stjude00'
+
+\du
+
+\q
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangogirls',
+        'USER': 'xsaints47',
+        'PASSWORD': 'stjude00',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+pip install psycopg2
+
+
+# loop
+define a url
+write a view function
+write a template
+
+
+
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/skeleton_website   
+https://scotch.io/tutorials/working-with-django-templates-static-files   
+http://drksephy.github.io/2015/07/16/django/
+https://timmyomahony.com/blog/static-vs-media-and-root-vs-path-in-django/
+
+
+psql
+
+# CREATE USER name;
+
+pip install psycopg2
+
+
+
+
+- register apps
+main/settings - 
+INSTALLED_APPS = [
+  ...
+  # my apps
+  'app001',    
+  'app002',
+  
+  ]
+
+  # this is main/templates
+  'DIRS': [os.path.join(BASE_DIR, 'main/templates')],
+
+
+copy & edit .gitignore
+at venv, git init .
+git add .
+git status
+git commit -m "comment"
+  
+  
+- create superuser
+python manage.py createsuperuser  
+  
+
+- create models
+app001/models.py
+  
+- register models with admin
+
+
+
+
+  
+main/urls
+  from django.conf.urls import url, include
+
+  urlpatterns= [
+    url(r'', include('app001.urls', namespace= 'app001')),    
+    url(r'', include('app002.urls', namespace= 'app002')),    
+    
+  ]
+  
+  
+
+app00x/urls
+  #define url patterns for app00x
+
+  from django.conf.urls import url
+
+  from . import views
+
+  urlpatterns= [
+    #homepage
+    url(r'^$', views.index, name= 'index'),
+]      
+
+
+  
+app00x/views
+  # Create your views here.
+  
+  import datetime
+   
+  def index(request):
+    ''' default main page '''
+    return render(request, 'app001/app001.html')
+    
+
+
+app00x/templates/app00x/
+  - app001.html
+
+  <html>
+  <head>
+    <title>EPL IBLIO</title>
+  </head>
+
+  <body>
+  <h1>Books App</h1>
+  <p1>{{ datetime }}
+
+  </body>
+  </html>
+
+  
+create app
+
+in settings.py of main, add app
+
+in urls.py of main, include urls.py of app
+
+in views.py of app, add def for index
+
+create folders templates/app, 
+create index.html in above directory
+
+
+create app/models.py 
+
+add records
+
+
+create urllink
+- urls.py > views.py def > templates
+
+
+
+
+create model in xx008_app001\models.py
+
+
+register model in xx008_app001\admin.py
+
+
+create superuser
+login to 127.0.0.1:8000/admin using superuser
+add records
+
+
+add 'include x008_app001.urls' in xx008_main.urls 
+
+
+
+
+
+
+
+xx006_main\urls.py
+
+urlpatterns= [
+
+  url(r'', include('xx006_app001.urls', namespace= 'xx006_app001')),
+
+]
+
+
+
+
+xx006_app001\urls.py
+
+urlpatterns= [
+
+  url(r'^expense_reports\$', views.expense_reports, name= 'expense_reports'),
+  
+]  
+
+  
+xx006_app001\views.py
+
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+
+from .models import Expense_Report, Expense_Lines
+
+
+def expense_reports(request):
+  expense_reports= Expense_Report.objects.all()
+  context= {'expense_reports': expense_reports}
+  return render(request, 'xx006_app001/expense_reports.html', context)
+  
+
+def specific_expense_report(request, er_id):
+  expense_report= Expense_Report.objects.get(id= er_id)
+  
+  
+  
+
+xx006_app001\models.py
+
+class Expense_Report(models.Model):
+  exp_number= models.CharField(max_length= 20)
+  date_incurred= models.DateTimeField(auto_now_add= True)
+
+  class Meta:
+    verbose_name_plural= 'Expense_Reports'
+    
+  def __str__(self):
+    return self.exp_number
+
+
+class Expense_Lines(models.Model):
+  exp_number = models.ForeignKey(Expense_Report)
+  line_number= models.Integer()
+  line_amount= models.DecimalField(max_digits= 5, decimals= 2)  
+  
+  def __str__(self):
+    return self.line_number + " " + str(self.line_amount)
+  
+  
+  
+  
+  
+

@@ -4,8 +4,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 
-from mynotebook.models import Topic, Entry
-from mynotebook.forms import TopicForm, EntryForm
+from mynotebook.models import Topic, Entry, UsersN
+from mynotebook.forms import TopicForm, EntryForm, UsersNForm
 
 
 
@@ -75,3 +75,23 @@ def edit_entry(request, entry_id):
 			return HttpResponseRedirect(reverse('ns_notebook:specific_topic', args= [topic.id]))
 
 	return render(request, 'mynotebook/edit_entry.html', {'form': form, 'entry': entry, 'topic': topic})	
+
+
+
+def list_users(request):
+	users= UsersN.objects.all()
+	return render(request, 'mynotebook/users.html', {'users': users})
+
+
+def new_user(request):
+	form= UsersNForm()
+
+	if request.method == 'POST':
+		form= UsersNForm(request.POST)
+		if form.is_valid():
+			#print(request.POST['subject'])
+			#print("hello world!")
+			form.save()
+			return HttpResponseRedirect(reverse('ns_notebook:new_user'))
+
+	return render(request, 'mynotebook/new_user.html', {'form': form})
