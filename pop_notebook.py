@@ -28,6 +28,7 @@ def populate(N=5):
 		#fake_date= fake_gen.date()
 		#fake_name= fake_gen.company()
 		fake_text= fake_gen.text()
+		fake_dt= fake_gen.date_time()
 
 
 		entrylog= Entry.objects.get_or_create(topic= xtopic, text= fake_text)[0]

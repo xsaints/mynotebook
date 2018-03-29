@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css_blk %}<link rel= "stylesheet" href= "{% static 'css/me01.css' %}" />
+{% endblock %}
+
+{% block body_blk %}
+
+	<h1>New Topic</h1>
+	<form action= "{% url 'mynotebook:new_topic' %}" method= "POST">
+		{{ form.as_p }}
+		{% csrf_token %}
+
+		<button name= "submit">Add topic</button>
+
+	</form>
+
+{% endblock %}

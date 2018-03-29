@@ -1,17 +1,25 @@
+<! doctype html>
 <html>
 
 <head>
 	<meta charset="UTF-8">
+
 	<title>
 		{%block title_blk %}My Base Page{% endblock %}
 	</title>
+
+	{% block css_blk %}{% endblock %}
+
 </head>
 
 
 <body>
+
 	{% block body_blk %}
 		<p>This is the base body block.</p>
 	{% endblock %}
+
+
 </body>
 
 </html>

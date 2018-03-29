@@ -13,9 +13,14 @@
 {% block body_blk %}
 	{% include './mynb_navig.html' %}
 
-	<h1>My Notebook</h1>
+	<h1>Topics</h1>
 
-	<img src = "{% static 'images/me.png' %}" alt= "uh oh" />
+	<ul>
+	{% for t in topics %}
+		<li> <a href= "{% url 'mynotebook:specific_topic' t.id %}">{{ t.subject }}</a> </li>
+	{% endfor %}
+	</ul>
 
+	<p><a href= "{% url 'mynotebook:new_topic' %}">Add new topic</a></p>
 
 {% endblock %}
