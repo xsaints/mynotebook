@@ -14,7 +14,7 @@ class Entry(models.Model):
 	topic= models.ForeignKey(Topic, on_delete= models.CASCADE)		
 	text= models.TextField()
 	entry_date= models.DateTimeField(auto_now_add= True)
-	#last_update= models.DateField(auto_now= True)
+	last_update= models.DateTimeField(auto_now= True)
 
 	class Meta:
 		verbose_name_plural= 'entries'

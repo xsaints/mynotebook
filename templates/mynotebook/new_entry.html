@@ -13,12 +13,14 @@
 {% block body_blk %}
 	{% include './mynb_navig.html' %}
 
-	<h1>New Topic</h1>
-	<form action= "{% url 'mynotebook:new_topic' %}" method= "POST">
+
+	<h1>Topic: {{ topic.subject }}</h1>
+
+	<form action= "{% url 'mynotebook:new_entry' topic.id %}" method= "POST">
 		{{ form.as_p }}
 		{% csrf_token %}
 
-		<button name= "submit">Add topic</button>
+		<button name= "submit">Save entry</button>
 
 	</form>
 

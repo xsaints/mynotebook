@@ -13,4 +13,7 @@ class TopicForm(forms.ModelForm):
 class EntryForm(forms.ModelForm):
 	class Meta:
 		model= Entry
-		exclude= ['entry_date',]
+		#exclude= ['entry_date',]
+		fields= ['text',]
+		labels= {'text': ''}
+		widgets= {'text': forms.Textarea(attrs={'cols':80})}

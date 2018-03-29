@@ -15,11 +15,13 @@
 
 	<h1>Topic: {{ topic.subject }}</h1>
 
-	<p>Entries:</p>
+	<p>Entries: <a href= "{% url 'mynotebook:new_entry' topic.id %}">Add entry</a></p>
 	<ul>
 	{% for e in entries %}
 		<li>
-		<p>{{ e.entry_date|date:'M d, Y H:i' }}</p>
+		<p>{{ e.last_update|date:'M d, Y H:i' }} 
+	 		<a href= "{% url 'mynotebook:edit_entry' e.id %}">Edit</a>
+		</p>
 		 <p>{{ e.text|linebreaks }}</p>
 		</li>
 	{% empty %}
