@@ -21,4 +21,6 @@ urlpatterns = [
 
 	path('mynotebook/', include('mynotebook.urls', namespace= 'ns_notebook')),    
 
+	path('users/', include('nb_users.urls', namespace= 'ns_users')),    
+
 ]

@@ -1,19 +1,25 @@
 <! doctype html>
+
+{% load staticfiles %}
+
 <html>
 
 <head>
 	<meta charset="UTF-8">
 
 	<title>
-		{%block title_blk %}My Base Page{% endblock %}
+		{% block title_blk %}My Notebook{% endblock %}		
 	</title>
 
-	{% block css_blk %}{% endblock %}
+	{% block css_blk %}
+		<link rel= "stylesheet" href= "{% static 'css/me01.css' %}" />
+	{% endblock %}
 
 </head>
 
 
 <body>
+	{% include 'mynotebook/mynb_navig.html' %}
 
 	{% block body_blk %}
 		<p>This is the base body block.</p>

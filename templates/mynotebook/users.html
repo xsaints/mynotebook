@@ -1,23 +1,14 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
-
-
-{% block title_blk %}My Notebook{% endblock %}
-
-
-{% block css_blk %}
-	<link rel= "stylesheet" href= "{% static 'css/me01.css' %}" />
-{% endblock %}
-
 
 {% block body_blk %}
-	{% include './mynb_navig.html' %}
 
 	<h1>Users</h1>
 
 	<ul>
 	{% for u in users %}
 		<li>{{ u }} {{ u.user_email }}</li>
+	{% empty %}		
+		<li>No users yet.</li>
 	{% endfor %}
 	</ul>
 

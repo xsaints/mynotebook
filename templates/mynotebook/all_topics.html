@@ -1,26 +1,17 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
-
-
-{% block title_blk %}My Notebook{% endblock %}
-
-
-{% block css_blk %}
-	<link rel= "stylesheet" href= "{% static 'css/me01.css' %}" />
-{% endblock %}
 
 
 {% block body_blk %}
-	{% include './mynb_navig.html' %}
 
 	<h1>Topics</h1>
-
+	<p><a href= "{% url 'mynotebook:new_topic' %}">Add new topic</a></p>
+	
 	<ul>
 	{% for t in topics %}
 		<li> <a href= "{% url 'mynotebook:specific_topic' t.id %}">{{ t.subject }}</a> </li>
 	{% endfor %}
 	</ul>
 
-	<p><a href= "{% url 'mynotebook:new_topic' %}">Add new topic</a></p>
+
 
 {% endblock %}
