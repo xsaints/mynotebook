@@ -147,3 +147,5 @@ STATICFILES_DIRS= [
 MEDIA_ROOT = MEDIA_DIR
 
 MEDIA_URL = '/media/'
+
+LOGIN_URL = '/nb_users/user_login'

@@ -2,3 +2,12 @@
 <a href= "{% url 'mynotebook:index' %}">Home</a> >
 <a href= "{% url 'mynotebook:all_topics' %}">Topics</a>
 </p>
+
+<p>
+{% if user.is_authenticated %}
+	<p>Hello, {{ user.username }}
+	<a href= "{% url 'nb_users:user_logout' %}">Logout</a></p>
+{% else %}
+	<a href= "{% url 'nb_users:register' %}">Register</a> | <a href= "{% url 'nb_users:user_login' %}">Login</a>
+{% endif %}
+</p>

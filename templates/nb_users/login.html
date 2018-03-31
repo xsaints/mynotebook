@@ -1,1 +1,23 @@
-<p>login.html</p>
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block body_blk %}
+
+	<h1>Login</h1>
+
+	<form action= "{% url 'nb_users:user_login' %}" method= "POST">	
+		{% csrf_token %}
+
+		<label for = "username">Username:</label>
+		<input type= 'text' value= '' name= "username" placeholder= "Enter username" />
+
+		<p></p>
+		<label for= "password">Password:</label>
+		<input type= 'password' value= '' name= "password" />
+
+		<p></p>
+		<input type= "submit" name= "" value= "Log In">
+	</form>
+
+{% endblock %}
