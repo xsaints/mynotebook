@@ -13,6 +13,7 @@ from nb_users.models import UserProfileInfo
 
 
 # Create your views here.
+@login_required
 def users(request):
 
 	return render(request, 'nb_users/users.html')
@@ -49,9 +50,16 @@ def register(request):
 			
 			registered= True
 
+			#login the user and redirect to home page
+			authenticated_user= authenticate(username= user.username, password= request.POST['password1'])
+			login(request, authenticated_user)	
+			return HttpResponseRedirect(reverse('mynotebook:index'))
+
+		'''	
 		else:	# if any error
 			print('error')
-			print(user_form.errors) #, profile_form.errors)
+			print(user_form.errors, profile_form.errors)
+		'''
 
 	return render(request, 'nb_users/register.html', {'registered': registered, 'user_form': user_form, 'profile_form': profile_form})	
 
@@ -64,18 +72,18 @@ def user_login(request):
 		password= request.POST.get('password')
 
 		user= authenticate(username= username, password= password)
-
 		if user:
 			if user.is_active:
 				login(request, user)
 				return HttpResponseRedirect(reverse('mynotebook:index'))
-
+		
 			else:
 				return HttpResponse('Account not active')
 		else:
 			print("Someone tried to login and failed!")
 			print('{} {}'.format(username, password))
 			return HttpResponse('Invalid login details supplied!')
-
+			#return render(request, 'nb_users/login.html')			
 	else:
-		return render(request, 'nb_users/login.html', {})
+		return render(request, 'nb_users/login.html')
+	

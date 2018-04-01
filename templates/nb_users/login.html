@@ -6,6 +6,10 @@
 
 	<h1>Login</h1>
 
+	{% if form.errors %}
+		<p>Your username and password didn't match. Please try again.</p>
+	{% endif %}
+
 	<form action= "{% url 'nb_users:user_login' %}" method= "POST">	
 		{% csrf_token %}
 
@@ -18,6 +22,9 @@
 
 		<p></p>
 		<input type= "submit" name= "" value= "Log In">
+
+
+		<input type= 'hidden' name= 'next' value= "{% url 'mynotebook:index' %}" />
 	</form>
 
 {% endblock %}

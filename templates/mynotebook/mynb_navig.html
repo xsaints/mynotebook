@@ -1,12 +1,10 @@
-<p>Navig|
-<a href= "{% url 'mynotebook:index' %}">Home</a> >
-<a href= "{% url 'mynotebook:all_topics' %}">Topics</a>
-</p>
-
 <p>
+<a href= "{% url 'mynotebook:index' %}">My Notebook</a> - 
+<a href= "{% url 'mynotebook:all_topics' %}">Topics</a> -
+
 {% if user.is_authenticated %}
-	<p>Hello, {{ user.username }}
-	<a href= "{% url 'nb_users:user_logout' %}">Logout</a></p>
+	<p>Hello, {{ user.username }}.
+	<a href= "{% url 'nb_users:user_logout' %}">Logout</a>
 {% else %}
 	<a href= "{% url 'nb_users:register' %}">Register</a> | <a href= "{% url 'nb_users:user_login' %}">Login</a>
 {% endif %}
