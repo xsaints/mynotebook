@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block body_blk %}
+
+	<h1>My Blog</h1>
+	
+	<img src = "{% static 'images/blog.jpg' %}" alt= "uh oh" />
+
+	<p><a href= "{% url 'myblog:topics_list' %}">Blog Topics</a></p>
+
+{% endblock %}

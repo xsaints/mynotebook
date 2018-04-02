@@ -18,16 +18,19 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
 
-from mynotebook import views
+from xx0027_main import views
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    url(r'^$', views.index, name= 'index'),
+    url(r'^$', views.home, name= 'home'),
 
 	path('mynotebook/', include('mynotebook.urls', namespace= 'ns_notebook')),    
 
 	path('users/', include('nb_users.urls', namespace= 'ns_users')),    
+
+    path('myblog/', include('myblog.urls', namespace= 'ns_myblog')),        
 
 ]

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body_blk %}
+
+	<h1>Home</h1>
+
+	<img src = "{% static 'images/me.png' %}" alt= "uh oh" />	
+
+	<p><a href= "{% url 'mynotebook:index' %}">My Notes</a></p>
+
+	<p><a href= "{% url 'myblog:index' %}">My Blog</a></p> 
+
+	<p><a href= "{% url 'mynotebook:index' %}">My Expense Tracker</a></p>    
+
+	<p><a href= "{% url 'mynotebook:index' %}">My Store</a></p> 
+
+
+{% endblock %}
+
+<p>Hello me</p>

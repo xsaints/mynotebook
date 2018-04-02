@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # my apps
     'mynotebook',
     'nb_users',
+    'myblog',
     
 ]
 

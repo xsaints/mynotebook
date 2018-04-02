@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body_blk %}
+
+	<h1>Blog Topics</h1>
+
+	<ul>
+	{% for p in posts %}
+		<li>{{ p.title }}</li>
+	{% endfor %}
+	</ul>
+
+
+
+{% endblock %}

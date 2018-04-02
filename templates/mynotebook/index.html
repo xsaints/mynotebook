@@ -2,13 +2,12 @@
 {% load staticfiles %}
 
 
-
 {% block body_blk %}
 
-
 	<h1>My Notebook</h1>
+	
+	<img src = "{% static 'images/notebook.jpg' %}" alt= "uh oh" />
 
-	<img src = "{% static 'images/me.png' %}" alt= "uh oh" />
-
+	<p><a href= "{% url 'mynotebook:all_topics' %}">Topics</a><p>
 
 {% endblock %}
