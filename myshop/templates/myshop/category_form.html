@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block body_blk %}
+
+	<h1>
+	{% if not form.instance.pk %}
+		Create Category
+	{% else %}
+		Update Category
+	{% endif %}
+	</h1>
+	
+	<p><a href= "{% url 'myshop:categories' %}">Categories</a></p>
+
+	<form method= 'POST'>
+		{% csrf_token %}
+		{{ form.as_p }}
+
+		<input type= 'submit' value= 'Submit' />
+
+
+	</form>
+
+{% endblock %}

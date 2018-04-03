@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block body_blk %}
+
+	<h1>Categories</h1>
+	
+
+	<ul>
+	{% for category in categories %}
+
+		<li><a href= "{% url 'myshop:category_products' category.id %}">{{ category.name }}</a></li>
+
+	{% empty %}
+		<p>No categories yet.</p>
+
+	{% endfor %}
+	</ul>
+
+{% endblock %}

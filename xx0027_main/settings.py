@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'mynotebook',
     'nb_users',
     'myblog',
-    
+    'myshop',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block body_blk %}
+
+	<h1>Products</h1>
+	
+	<p><a href= "{% url 'myshop:categories' %}">Categories</a></p>
+
+	<ul>
+	{% for product in category.products.all %}
+
+		<li>{{ product.name }}</li>
+
+	{% empty %}
+		<p>No products under this category yet.</p>
+	{% endfor%}
+	</ul>
+
+
+	<p><a href= "{% url 'myshop:category_update' category.pk %}">Update</a>
+
+{% endblock %}

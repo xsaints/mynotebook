@@ -33,4 +33,6 @@ urlpatterns = [
 
     path('myblog/', include('myblog.urls', namespace= 'ns_myblog')),        
 
+    path('myshop/', include('myshop.urls', namespace= 'ns_myshop')),            
+
 ]
